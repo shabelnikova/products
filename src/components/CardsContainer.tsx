@@ -1,16 +1,28 @@
 import React from 'react';
-import Card from "@/components/card/Card";
+import Card from "@/components/Card";
+import products from "@/data/products";
 
 const CardsContainer = () => {
+    if (!products || products.length === 0) {
+        return <p className="text-2xl font-bold pl-14">No products available</p>;
+    }
+
     return (
-        <div className="grid grid-cols-3 gap-10">
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-        </div>
+        <>
+            <h1 className="text-2xl font-bold pl-8">Our products</h1>
+            <div className="py-10 mx-auto grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-10 bg-light-gray-cold">
+                {products.map((el) => (
+                    <Card
+                        key={el.id}
+                        id={el.id}
+                        image={el.image}
+                        name={el.name}
+                        description={el.description}
+                        price={el.price}
+                    />
+                ))}
+            </div>
+        </>
     );
 };
 

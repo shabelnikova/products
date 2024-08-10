@@ -8,6 +8,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      truncate: {
+        multiline: {
+          3: {
+            '-webkit-line-clamp': '3',
+          },
+          4: {
+            '-webkit-line-clamp': '4',
+          },
+        },
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -19,6 +29,23 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        '.truncate-3-lines': {
+          display: '-webkit-box',
+          '-webkit-box-orient': 'vertical',
+          overflow: 'hidden',
+          '-webkit-line-clamp': '3',
+        },
+        '.truncate-4-lines': {
+          display: '-webkit-box',
+          '-webkit-box-orient': 'vertical',
+          overflow: 'hidden',
+          '-webkit-line-clamp': '4',
+        },
+      });
+    },
+  ],
 };
 export default config;

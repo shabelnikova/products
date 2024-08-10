@@ -1,8 +1,0 @@
-.container {
-    display: flex;
-    flex-direction: column;
-}
-.image {
-    max-width: 400px;
-    object-fit: contain;
-}

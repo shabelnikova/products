@@ -58,3 +58,34 @@ export async function GET(request: Request, { params }: { params: { id: string }
         await client.close();
     }
 }
+export async function PUT(request: Request, { params }: { params: { id: string } }) {
+    const client = new MongoClient(uri);
+    await client.connect();
+    const database = client.db(dbName);
+    const collection = database.collection(collectionName);
+
+    try {
+        const { id } = params;
+        const product = await request.json();
+
+        // Валидация (можно добавить больше проверок, если необходимо)
+        if (!product.name || !product.price || !product.image || !product.description || !product.releaseDate) {
+            return NextResponse.json({ error: 'All fields are required' });
+        }
+
+        const result = await collection.updateOne(
+            { _id: new ObjectId(id) },
+            { $set: product }
+        );
+
+        if (result.matchedCount === 0) {
+            return NextResponse.json({ error: 'Product not found' });
+        }
+
+        return NextResponse.json({ success: true, product: { ...product, id } });
+    } catch (error) {
+        return NextResponse.json({ error: 'Failed to update product' });
+    } finally {
+        await client.close();
+    }
+}

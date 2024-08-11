@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {format} from "date-fns";
 import {Product} from "@/types/product";
 
@@ -27,8 +27,15 @@ const ProductPage = ({ params }: { params: { id: string } }) => {
         fetchProduct();
     }, [params.id]);
 
+
     if (loading) {
-        return <div className="p-24 text-xl">Loading...</div>;
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        );
     }
 
     if (error) {
@@ -40,7 +47,7 @@ const ProductPage = ({ params }: { params: { id: string } }) => {
     }
 
     return (
-        <main className="mx-auto max-w-screen-2xl">
+        <main className="mx-auto max-w-screen-2xl h-screen">
             <h1 className="text-2xl md:text-4xl font-bold p-10">{product.name}</h1>
             <div className="p-8 md:p-16 flex flex-col md:flex-row items-start gap-8 md:gap-16 ">
                 <img src={product.image} alt={product.name} className="w-68 object-contain md:w-80" />

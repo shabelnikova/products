@@ -23,3 +23,29 @@ export async function GET() {
         releaseDate: new Date(product.releaseDate), // Преобразуем дату
     })));
 }
+
+
+export async function POST(request: Request) {
+    const client = new MongoClient(uri);
+    await client.connect();
+    const database = client.db(dbName);
+    const collection = database.collection(collectionName);
+
+    try {
+        const product = await request.json();
+
+        // Валидация (можно добавить больше проверок, если необходимо)
+        if (!product.name || !product.price || !product.image || !product.description || !product.releaseDate) {
+            return NextResponse.json({ error: 'All fields are required' });
+        }
+
+        const result = await collection.insertOne(product);
+        const createdProduct = { ...product, id: result.insertedId.toString() };
+
+        return NextResponse.json({ success: true, product: createdProduct });
+    } catch (error) {
+        return NextResponse.json({ error: 'Failed to create product' });
+    } finally {
+        await client.close();
+    }
+}

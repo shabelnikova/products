@@ -3,9 +3,8 @@ import CardsContainer from "@/components/CardsContainer";
 import {Product} from "@/types/product";
 
 const uri: string = process.env.MONGODB_URI!;
-const dbName: string = "products"; // Замените на имя вашей базы данных
-const collectionName: string = "items"; // Имя коллекции
-
+const dbName: string = "products";
+const collectionName: string = "items";
 async function fetchProducts(): Promise<Product[]> {
     const client = new MongoClient(uri);
     await client.connect();
@@ -19,14 +18,14 @@ async function fetchProducts(): Promise<Product[]> {
 
     return products
         .map(product => ({
-            id: product._id.toString(), // Преобразуем ObjectId в строку
+            id: product._id.toString(),
             image: product.image,
             name: product.name,
             price: product.price,
             description: product.description,
-            releaseDate: new Date(product.releaseDate), // Преобразуем строку или объект MongoDB в объект Date
+            releaseDate: new Date(product.releaseDate),
         }))
-        .filter(product => product.releaseDate <= currentDate); // Фильтруем товары по дате релиза
+        .filter(product => product.releaseDate <= currentDate);
 }
 
 

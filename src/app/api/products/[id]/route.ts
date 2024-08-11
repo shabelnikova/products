@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server';
 import { MongoClient, ObjectId } from 'mongodb';
 
 const uri: string = process.env.MONGODB_URI!;
-const dbName: string = "products"; // Имя вашей базы данных
-const collectionName: string = "items"; // Имя коллекции
+const dbName: string = "products";
+const collectionName: string = "items";
 
 export async function DELETE(request: Request, { params }: { params: { id: string } }) {
     const client = new MongoClient(uri);
@@ -68,7 +68,6 @@ export async function PUT(request: Request, { params }: { params: { id: string }
         const { id } = params;
         const product = await request.json();
 
-        // Валидация (можно добавить больше проверок, если необходимо)
         if (!product.name || !product.price || !product.image || !product.description || !product.releaseDate) {
             return NextResponse.json({ error: 'All fields are required' });
         }

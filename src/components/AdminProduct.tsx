@@ -13,7 +13,7 @@ const AdminProduct: React.FC<{ product: Product; onDelete: (id: string) => void;
             <p>Id: {id}</p>
             <p>Name: {name}</p>
             <p>Price: {price}</p>
-            <p>Release date: {format(new Date(releaseDate), 'MM/dd/yyyy')}</p>
+            <p>Release date: {releaseDate ? format(new Date(releaseDate), 'MM/dd/yyyy') : 'Not available'}</p>
             <FaEdit className="text-xl cursor-pointer" onClick={() => onEdit(product)} />
             <FaRegTrashCan className="text-xl cursor-pointer" onClick={() => onDelete(id)} />
         </div>

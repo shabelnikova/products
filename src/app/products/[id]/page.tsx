@@ -54,7 +54,9 @@ const ProductPage = ({ params }: { params: { id: string } }) => {
                 <div className="flex flex-col gap-8 md:gap-16">
                     <p className="text-lg">{product.description}</p>
                     <p className="text-xl">Price: {product.price}</p>
-                    <p className="text-md">Release Date: {format(product.releaseDate, 'MM/dd/yyyy')}</p>
+                    <p className="text-md">
+                        Release Date: {product.releaseDate ? format(product.releaseDate, 'MM/dd/yyyy') : 'Not available'}
+                    </p>
                 </div>
             </div>
         </main>

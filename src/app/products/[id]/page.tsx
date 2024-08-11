@@ -4,7 +4,7 @@ import {format} from "date-fns";
 import {Product} from "@/types/product";
 
 const ProductPage = ({ params }: { params: { id: string } }) => {
-    const [product, setProduct] = useState<Product>(null);
+    const [product, setProduct] = useState<Product | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 

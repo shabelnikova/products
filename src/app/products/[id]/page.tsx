@@ -47,7 +47,7 @@ const ProductPage = ({ params }: { params: { id: string } }) => {
     }
 
     return (
-        <main className="mx-auto max-w-screen-2xl h-screen">
+        <main className="mx-auto max-w-screen-2xl pb-8">
             <h1 className="text-2xl md:text-4xl font-bold p-10">{product.name}</h1>
             <div className="p-8 md:p-16 flex flex-col md:flex-row items-start gap-8 md:gap-16 ">
                 <img src={product.image} alt={product.name} className="w-68 object-contain md:w-80" />

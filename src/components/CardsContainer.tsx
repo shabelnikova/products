@@ -1,8 +1,9 @@
 import React from 'react';
 import Card from "@/components/Card";
-import products from "@/data/products";
+import {Product} from "@/types/product";
 
-const CardsContainer = () => {
+
+const CardsContainer = ({ products }: { products: Product[] }) => {
     if (!products || products.length === 0) {
         return <p className="text-2xl font-bold pl-14">No products available</p>;
     }

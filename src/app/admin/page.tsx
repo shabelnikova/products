@@ -1,15 +1,39 @@
 "use client";
-import React, {useState} from 'react';
-import initialProducts from "@/data/products";
+import React, { useEffect, useState } from 'react';
 import AdminProduct from "@/components/AdminProduct";
-import {Product} from "@/types/product";
+import { Product } from "@/types/product";
 
 const Page = () => {
-    const [products, setProducts] = useState<Product[]>(initialProducts);
+    const [products, setProducts] = useState<Product[]>([]); // Начальное состояние - пустой массив
 
-    const handleDelete = (id: string) => {
-        const updatedProducts = products.filter(product => product.id !== id);
-        setProducts(updatedProducts); // Обновляем состояние
+    useEffect(() => {
+        // Функция для загрузки данных
+        const fetchProducts = async () => {
+            const response = await fetch('/api/products');
+            const data: Product[] = await response.json();
+            setProducts(data);
+        };
+
+        fetchProducts();
+    }, []); // Пустой массив зависимостей, чтобы запрос выполнялся один раз при монтировании
+
+    const handleDelete = async (id: string) => {
+        try {
+            const response = await fetch(`/api/products/${id}`, {
+                method: 'DELETE',
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                const updatedProducts = products.filter(product => product.id !== id);
+                setProducts(updatedProducts); // Обновляем состояние
+            } else {
+                console.error('Failed to delete product:', result.error);
+            }
+        } catch (error) {
+            console.error('Error deleting product:', error);
+        }
     };
 
     return (

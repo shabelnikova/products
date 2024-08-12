@@ -399,26 +399,48 @@ const Page = () => {
         <main className="text-black mx-auto max-w-screen-2xl py-4 w-full md:w-4/5 flex flex-col gap-4">
             {!showForm ? (
                 <>
+                    {/*<div className="flex justify-between items-center px-4 md:px-0">*/}
+                    {/*    <button onClick={handleAddNew} className="*/}
+                    {/*    py-2 md:py-4 px-4 md:px-6 text-sm md:text-xl*/}
+                    {/*    font-semibold md:border bg-gray-300*/}
+                    {/*    md:rounded-lg hover:bg-gray-400/60*/}
+                    {/*    ">*/}
+                    {/*        Add new product*/}
+                    {/*    </button>*/}
+                    {/*    <select*/}
+                    {/*        value={sortCriteria}*/}
+                    {/*        onChange={(e) => setSortCriteria(e.target.value)}*/}
+                    {/*        className="py-2 md:py-4 px-4 md:px-6 text-sm md:text-xl*/}
+                    {/*        font-semibold md:border bg-gray-300*/}
+                    {/*        md:rounded-lg"*/}
+                    {/*    >*/}
+                    {/*        <option value="name">Sort by Name</option>*/}
+                    {/*        <option value="price">Sort by Price</option>*/}
+                    {/*        <option value="releaseDate">Sort by Release Date</option>*/}
+                    {/*    </select>*/}
+                    {/*</div>*/}
                     <div className="flex justify-between items-center px-4 md:px-0">
                         <button onClick={handleAddNew} className="
-                        py-2 md:py-4 px-4 md:px-6 text-sm md:text-xl
-                        font-semibold md:border bg-gray-300
-                        md:rounded-lg hover:bg-gray-400/60
-                        ">
+    py-2 md:py-4 px-4 md:px-6 text-sm md:text-xl
+    font-semibold border bg-gray-300
+    rounded-lg hover:bg-gray-400/60
+    ">
                             Add new product
                         </button>
                         <select
                             value={sortCriteria}
                             onChange={(e) => setSortCriteria(e.target.value)}
                             className="py-2 md:py-4 px-4 md:px-6 text-sm md:text-xl
-                            font-semibold md:border bg-gray-300
-                            md:rounded-lg"
+        font-semibold border bg-gray-300
+        rounded-lg appearance-none"
+                            style={{ WebkitAppearance: 'none', MozAppearance: 'none', appearance: 'none', maxWidth: '200px' }}
                         >
                             <option value="name">Sort by Name</option>
                             <option value="price">Sort by Price</option>
                             <option value="releaseDate">Sort by Release Date</option>
                         </select>
                     </div>
+
                     {products.map((product) => (
                         <AdminProduct
                             key={product.id}

@@ -2,12 +2,10 @@ import React from 'react';
 import Card from "@/components/Card";
 import {Product} from "@/types/product";
 
-
 const CardsContainer = ({ products }: { products: Product[] }) => {
     if (!products || products.length === 0) {
         return <p className="text-2xl font-bold pl-14">No products available</p>;
     }
-
     return (
         <>
             <h1 className="text-2xl font-bold pl-8">Our products</h1>

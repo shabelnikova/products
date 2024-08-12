@@ -28,7 +28,7 @@ const LoginPage = () => {
     };
 
     return (
-        <div className="flex flex-col md:flex-row gap-10 justify-start md:justify-center items-center h-screen bg-gray-100">
+        <div className="text-black flex flex-col md:flex-row gap-10 justify-start md:justify-center items-center h-screen bg-gray-100">
             <div className="pt-20 md:pt-0 flex flex-col gap-4">
                 <p className="text-stone-600 italic text-xl">To enter admin page: </p>
                 <p className="text-stone-600 italic text-xl"> Login: admin </p>

@@ -116,6 +116,7 @@ const Page = () => {
             if (result.success) {
                 const updatedProducts = products.filter(product => product.id !== id);
                 setProducts(updatedProducts);
+                window.location.reload();
             } else {
                 console.error('Failed to delete product:', result.error);
             }
@@ -139,13 +140,13 @@ const Page = () => {
     }
 
     return (
-        <main className="mx-auto max-w-screen-2xl py-4 w-4/5 flex flex-col gap-4">
+        <main className="mx-auto max-w-screen-2xl py-4 w-full md:w-4/5 flex flex-col gap-4">
             {!showForm ? (
                 <>
                     <button onClick={handleAddNew} className="
-                    py-10 px-14 text-xl
-                    font-semibold border bg-gray-300
-                    rounded-lg hover:bg-gray-400/60
+                    py-6 md:py-10 px-8 md:px-14 md:text-xl
+                    font-semibold md:border bg-gray-300
+                    md:rounded-lg hover:bg-gray-400/60
                     ">
                         Add new product
                     </button>
@@ -159,7 +160,7 @@ const Page = () => {
                     ))}
                 </>
             ) : (
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 p-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-700">Product Name</label>
                         <input

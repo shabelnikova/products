@@ -9,13 +9,19 @@ const AdminProduct: React.FC<{ product: Product; onDelete: (id: string) => void;
 
     return (
         <div className="flex gap-4 p-4 border border-gray-300 rounded justify-between">
-            <img className="w-28" src={image} alt={name} />
-            <p>Id: {id}</p>
-            <p>Name: {name}</p>
-            <p>Price: {price}</p>
-            <p>Release date: {releaseDate ? format(new Date(releaseDate), 'MM/dd/yyyy') : 'Not available'}</p>
-            <FaEdit className="text-xl cursor-pointer" onClick={() => onEdit(product)} />
-            <FaRegTrashCan className="text-xl cursor-pointer" onClick={() => onDelete(id)} />
+            <div className="flex gap-4 items-center xl:items-start">
+                <img className="w-16 h-auto md:w-28 shrink-0" src={image} alt={name} />
+                <div className="flex flex-col xl:flex-row gap-2 md:gap-4 xl:gap-10">
+                    <p className="text-sm md:text-base">Id: {id}</p>
+                    <p className="text-sm md:text-base">Name: {name}</p>
+                    <p className="text-sm md:text-base">Price: {price}</p>
+                    <p className="text-sm md:text-base">Release date: {releaseDate ? format(new Date(releaseDate), 'MM/dd/yyyy') : 'Not available'}</p>
+                </div>
+            </div>
+            <div className="flex gap-4">
+                <FaEdit className="text-lg md:text-xl cursor-pointer" onClick={() => onEdit(product)} />
+                <FaRegTrashCan className="text-lg md:text-xl cursor-pointer" onClick={() => onDelete(id)} />
+            </div>
         </div>
     );
 };

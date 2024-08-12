@@ -396,7 +396,7 @@ const Page = () => {
     }
 
     return (
-        <main className="mx-auto max-w-screen-2xl py-4 w-full md:w-4/5 flex flex-col gap-4">
+        <main className="text-black mx-auto max-w-screen-2xl py-4 w-full md:w-4/5 flex flex-col gap-4">
             {!showForm ? (
                 <>
                     <div className="flex justify-between items-center px-4 md:px-0">

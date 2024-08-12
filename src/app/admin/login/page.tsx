@@ -28,7 +28,12 @@ const LoginPage = () => {
     };
 
     return (
-        <div className="flex justify-center items-center h-screen bg-gray-100">
+        <div className="flex flex-col md:flex-row gap-10 justify-start md:justify-center items-center h-screen bg-gray-100">
+            <div className="pt-20 md:pt-0 flex flex-col gap-4">
+                <p className="text-stone-600 italic text-xl">To enter admin page: </p>
+                <p className="text-stone-600 italic text-xl"> Login: admin </p>
+                <p className="text-stone-600 italic text-xl"> Password: 123456 </p>
+            </div>
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md">
                 <h1 className="text-xl font-bold mb-4">Admin Login</h1>
                 {error && <p className="text-red-500 mb-4">{error}</p>}

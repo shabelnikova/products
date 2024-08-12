@@ -12,8 +12,8 @@ const LoginPage = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        const storedLogin = process.env.NEXT_PUBLIC_ADMIN_LOGIN;
-        const storedPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
+        const storedLogin = "admin";
+        const storedPassword = "123456";
 
         if (login === storedLogin && password === storedPassword) {
             const authData = {

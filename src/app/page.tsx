@@ -51,4 +51,5 @@ export default async function Home() {
             <CardsContainer products={products} />
         </main>
     );
-}
+};
+export const revalidate = 60;
